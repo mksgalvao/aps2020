@@ -5,10 +5,8 @@
   "main": "start.js",
   "scripts": {
     "postinstall": "node start install-children",
-    "start": "node start server:client:mobile",
-    "server:client": "node start server:client",
+    "start": "node start server:mobile",
     "server:mobile": "node start server:mobile",
-    "client": "node start client",
     "mobile": "node start mobile",
     "server": "node start server",
     "test": "node start test"

@@ -61,7 +61,7 @@ class SignInScreen extends React.Component {
             <Logo />
             <Spacer>
               <Title style={{ alignSelf: 'center', color: colors.primary }}>
-                Sign In
+                Login
               </Title>
             </Spacer>
             <Spacer>
@@ -113,12 +113,6 @@ class SignInScreen extends React.Component {
               >
                 Sign In
               </Button>
-            </Spacer>
-            <Spacer vertical={12}>
-              <Text style={{ alignSelf: 'center' }}>Or Sign In With</Text>
-            </Spacer>
-            <Spacer>
-              <OAuthButtons />
             </Spacer>
             {this.props.errorMessage === 'Email is not verified' && (
               <NavLink

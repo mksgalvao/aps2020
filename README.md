@@ -44,30 +44,7 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
     - [x] Dev mode - See [server/Dockerfile](https://github.com/t-ho/mern-stack/blob/master/server/Dockerfile)
     - [x] Prod mode - See [server/Dockerfile.prod](https://github.com/t-ho/mern-stack/blob/master/server/Dockerfile.prod)
 
-### 2. React Client
-
-- Directory `client`
-- Created by using [create-react-app](https://www.npmjs.com/package/create-react-app)
-- Todo:
-  - [x] Redux store - [react-redux](https://www.npmjs.com/package/react-redux)
-  - [x] Redux form - [redux-form](https://redux-form.com/8.3.0). NOTE: Migrate to [formik](https://jaredpalmer.com/formik) soon
-  - [x] Router - [react-router-dom](https://www.npmjs.com/package/react-router-dom) - [connected-react-router](https://www.npmjs.com/package/connected-react-router)
-  - [x] Material design - [Material-UI](https://material-ui.com)
-  - [ ] Authentication pages
-    - [x] Sign up page
-    - [x] Sign in page with email, Facebook or Google account
-    - [x] Request password reset email page
-    - [x] Request verification email page
-    - [x] Reset password page
-    - [ ] Profile page
-  - [ ] User management pages
-    - [ ] User list page
-    - [ ] User edit page
-  - [x] Docker support - [node:lts-buster](https://hub.docker.com/_/node) - [nginx:stable-alpine](https://hub.docker.com/_/nginx)
-    - [x] Dev mode - See [client/Dockerfile](https://github.com/t-ho/mern-stack/blob/master/client/Dockerfile)
-    - [x] Prod mode - See [client/Dockerfile.prod](https://github.com/t-ho/mern-stack/blob/master/client/Dockerfile.prod)
-
-### 3. React Native - Mobile
+### 2. React Native - Mobile
 
 - Directory `mobile`
 - Created by using [expo-cli](https://www.npmjs.com/package/expo-cli). To switch to _bare_ workflow, please see docs [here](https://docs.expo.io/introduction/managed-vs-bare)
@@ -82,7 +59,7 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
     - [x] Request verification email screen
     - [ ] Settings screen
 
-### 4. Nginx Proxy
+### 3. Nginx Proxy
 
 - Directory `nginx-proxy`
 - Todo:
@@ -94,7 +71,7 @@ MERN stack is intended to provide a starting point for building full-stack JavaS
       - [x] Use recommended configuration - [server-configs-nginx](https://github.com/h5bp/server-configs-nginx)
   - [x] Configuration can be done easily by modifying the `.env` file
 
-### 5. CI and CD
+### 4. CI and CD
 
 - Directory `.github/workflows`
 - Todo:
@@ -117,7 +94,6 @@ npm install -g expo-cli
 git clone https://github.com/t-ho/mern-stack.git
 cd mern-stack
 cp .env.example .env
-cp client/.env.example client/.env
 cp mobile/.env.example mobile/.env
 # Edit all three .env files to meet your requirements
 ```
@@ -132,13 +108,13 @@ npm install
 
 ### 4. Start development servers
 
-To start `server`, `client`, and `mobile`, run:
+To start `server` and `mobile`, run:
 
 ```bash
+docker-compose -f mongo.yml up -d
 # In the root directory (mern):
 npm start
 # Server API is running at http://localhost:SERVER_PORT (http://localhost:8861 by default)
-# Web client is running at http://localhost:PORT (http://localhost:3000 by default)
 # Mobile - Expo DevTools is running at http://localhost:19002
 ```
 
@@ -151,27 +127,9 @@ To restart npm process (_If you don't start the mobile development process, igno
 
 ```bash
 # In your current terminal, press Ctrl + C to exit. Then run
-npm start # start server, client and mobile dev process
+npm start # start server and mobile dev process
 # or
 npm run server:mobile # start server and mobile dev process
-```
-
-Or to start `server` and `client` only, run:
-
-```bash
-# In the root directory (mern):
-npm run server:client
-# Server API is running at http://localhost:SERVER_PORT (http://localhost:8861 by default)
-# Web client is running at http://localhost:PORT (http://localhost:3000 by default)
-```
-
-Or to start `server` and `mobile` only, run:
-
-```bash
-# In the root directory (mern):
-npm run server:mobile
-# Server API is running at http://localhost:SERVER_PORT (http://localhost:8861 by default)
-# Mobile - Expo DevTools is running at http://localhost:19002
 ```
 
 ### 5. Run the mobile app on your mobile devices
@@ -193,7 +151,7 @@ npm run server:mobile
 
 ### 8. Docker
 
-You can start the MERN stack (`server` and `client` only) using `docker-compose`:
+You can start the MERN stack (`server` only) using `docker-compose`:
 
 **Development mode**
 
@@ -201,7 +159,6 @@ You can start the MERN stack (`server` and `client` only) using `docker-compose`
 git clone https://github.com/t-ho/mern-stack.git
 cd mern-stack
 cp .env.example .env
-cp client/.env.example client/.env
 
 # Edit the .env file to meet your requirements
 docker-compose up
@@ -232,5 +189,4 @@ npm run test
 Testing frameworks:
 
 - Server: [mocha](https://mochajs.org/) - [chai](https://www.chaijs.com/) - [supertest](https://github.com/visionmedia/supertest)
-- Web-client: [jest](https://jestjs.io/)
 - Mobile:

@@ -1,0 +1,14 @@
+com/mernstack/BuildConfig.java
+ com.mernstack.BuildConfig
+com/mernstack/MainApplication.java
+ com.mernstack.MainApplication
+ com.mernstack.MainApplication$1
+com/mernstack/ReactNativeFlipper.java
+ com.mernstack.ReactNativeFlipper
+ com.mernstack.ReactNativeFlipper$1
+ com.mernstack.ReactNativeFlipper$2
+ com.mernstack.ReactNativeFlipper$2$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/mernstack/MainActivity.java
+ com.mernstack.MainActivity
