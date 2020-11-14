@@ -16,17 +16,27 @@ const title = 'Bem vindo';
 const HomeScreen = () => {
   const dispatch = useDispatch();
   const locations = useSelector((state) => state.locations.locations);
+  const isLoadinLocations = useSelector((state) => state.locations.loading);
 
   useEffect(() => {
     dispatch(getLocations());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
-      <AppbarHeader title={title} />
-      <SafeAreaView style={styles.container}>
-        <Maps />
-      </SafeAreaView>
+      {isLoadinLocations ? (
+        <>
+          <AppbarHeader title={title} />
+          <SafeAreaView style={styles.container}></SafeAreaView>
+        </>
+      ) : (
+        <>
+          <AppbarHeader title={title} />
+          <SafeAreaView style={styles.container}>
+            <Maps locations={locations} />
+          </SafeAreaView>
+        </>
+      )}
     </>
   );
 };

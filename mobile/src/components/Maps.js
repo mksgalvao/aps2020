@@ -4,9 +4,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 //  google api key
 
-const PROVIDER_GOOGLE = 'AIzaSyCe-_wU9xEx8BlIuWlAPTCb4758-uHMINw';
-
-const Maps = () => {
+const Maps = (props) => {
   const [region, setRegion] = useState({
     latitude: -23.7031764,
     longitude: -46.771167,
@@ -21,7 +19,15 @@ const Maps = () => {
         region={region}
         onRegionChangeComplete={(region) => setRegion(region)}
       >
-        <Marker coordinate={{ latitude: -23.7031767, longitude: -46.771167 }} />
+        {props.locations.map((dam, index) => (
+          <Marker
+            key={index}
+            coordinate={{
+              latitude: dam.location.lat,
+              longitude: dam.location.lng,
+            }}
+          />
+        ))}
       </MapView>
     </View>
   );
