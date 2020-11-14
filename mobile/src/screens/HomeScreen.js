@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { withTheme } from 'react-native-paper';
+import { Button, withTheme } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { signOut } from '../store/actions';
 import { getCurrentUser, getSignedInWith } from '../store/selectors';
 import AppbarHeader from '../components/AppbarHeader';
+import Maps from '../components/Maps';
+import Spacer from '../components/Spacer';
 
 const title = 'Home';
 
@@ -23,7 +25,9 @@ class HomeScreen extends React.Component {
     return (
       <>
         <AppbarHeader title={title} />
-        <SafeAreaView style={styles.container}></SafeAreaView>
+        <SafeAreaView style={styles.container}>
+          <Maps />
+        </SafeAreaView>
       </>
     );
   }

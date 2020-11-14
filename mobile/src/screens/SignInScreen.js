@@ -79,7 +79,7 @@ class SignInScreen extends React.Component {
               />
               <Spacer />
               <TextInput
-                label="Password"
+                label="Senha"
                 mode="outlined"
                 dense
                 secureTextEntry
@@ -92,12 +92,12 @@ class SignInScreen extends React.Component {
               />
               <View style={styles.navLinks}>
                 <NavLink
-                  text="Forgot password?"
+                  text="Esqueceu a senha?"
                   routeName="RequestPasswordReset"
                   disabled={this.props.isSigning}
                 />
                 <NavLink
-                  text="Register instead!"
+                  text="Registrar"
                   routeName="SignUp"
                   disabled={this.props.isSigning}
                 />
@@ -111,7 +111,7 @@ class SignInScreen extends React.Component {
                 loading={this.props.isSigning && this.props.type === 'email'}
                 disabled={this.props.isSigning}
               >
-                Sign In
+                Login
               </Button>
             </Spacer>
             {this.props.errorMessage === 'Email is not verified' && (
