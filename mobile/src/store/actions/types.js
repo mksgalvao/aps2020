@@ -35,3 +35,9 @@ export const REQUEST_PASSWORD_RESET_FAIL = '[Auth] Request Password Reset Fail';
 export const UNLOAD_AUTH_SCREEN = '[Auth] Unload Auth Screen';
 
 export const CLEAR_ERROR_MESSAGE = '[Auth] Clear Error Message';
+
+export const GET_LOCATIONS_LOADING = '[Locations] Loading Locations';
+
+export const GET_LOCATIONS_SUCCESS = '[Locations] Loading Locations Success';
+
+export const GET_LOCATIONS_FAIL = '[Locations] Loading Locations Fail';

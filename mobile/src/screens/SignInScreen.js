@@ -24,7 +24,12 @@ import { compose } from 'redux';
 import StatusBar from '../components/StatusBar';
 import { getError, getProcessing, getType } from '../store/selectors';
 import NavLink from '../components/NavLink';
-import { clearErrorMessage, signIn, unloadAuthScreen } from '../store/actions';
+import {
+  clearErrorMessage,
+  getLocations,
+  signIn,
+  unloadAuthScreen,
+} from '../store/actions';
 import Spacer from '../components/Spacer';
 import OAuthButtons from '../components/OAuthButtons';
 import Logo from '../components/Logo';
