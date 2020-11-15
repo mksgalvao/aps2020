@@ -56,3 +56,51 @@ module.exports.createUsers = (users) => {
     }, Promise.resolve())
     .then(() => Promise.resolve(addedUsers));
 };
+
+/**
+ * @function createDams
+ * Seed the given list of dams
+ *
+ * @param {string} dams The array of dam info to be created
+ * @returns {Promise} Resolve with a list of newly added dams
+ */
+module.exports.createDams = (dams) => {
+  const Dam = mongoose.model('Dam');
+  let addedDams = [];
+
+  return dams
+    .reduce((sequence, damInfo) => {
+      return sequence
+        .then(() => {
+          return Dam.findById(damInfo.id);
+        })
+        .then((existingDam) => {
+          if (existingDam) {
+            throw new Error(
+              chalk.yellow(
+                `[-] [Warning] Database seeding: ${damInfo.id} already in use.`
+              )
+            );
+          }
+          return Dam.findOneAndUpdate({ _id: damInfo._id }, damInfo, {
+            upsert: true,
+          });
+        })
+        .then((dam) => {
+          if (config.seed.logging) {
+            console.log(
+              chalk.green(
+                `[+] Database Seeding: A new dam added ${damInfo._id}`
+              )
+            );
+          }
+          addedDams.push(dam);
+        })
+        .catch((err) => {
+          if (config.seed.logging) {
+            console.log(err.message);
+          }
+        });
+    }, Promise.resolve())
+    .then(() => Promise.resolve(addedDams));
+};

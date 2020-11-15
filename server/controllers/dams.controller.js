@@ -1,97 +1,44 @@
 const fetch = require('node-fetch');
 const moment = require('moment');
-const { filter } = require('lodash');
+const mongoose = require('mongoose');
+
+const Dam = mongoose.model('Dam');
 
 const SABESP_API_URI =
   'http://mananciais.sabesp.com.br/api/Mananciais/ResumoSistemas';
 
 module.exports.getDams = (req, res, next) => {
   const date = moment().format('YYYY-MM-DD');
-  fetch(`${SABESP_API_URI}/${date}`)
-    .then((sabespResp) => sabespResp.json())
-    .then((sabespResp) => {
+  Promise.all([
+    fetch(`${SABESP_API_URI}/${date}`).then((sabespResp) => sabespResp.json()),
+    Dam.find(),
+  ])
+    .then(([sabespResp, damsLocations]) => {
       const sistemas =
         sabespResp && sabespResp.ReturnObj && sabespResp.ReturnObj.sistemas;
       if (!sistemas || sistemas.length < 1) {
         res.status(404);
       } else {
-        res.status(200).send(sistemas.map(toDam));
+        console.log('result', sabespResp, damsLocations);
+        res.status(200).send(sistemas.map((s) => toDam(damsLocations, s)));
       }
     })
     .catch(next);
 };
 
-const damsLocations = [
-  {
-    id: 0,
-    name: 'Cantareira',
-    location: {
-      lat: -23.1566035,
-      lng: -46.3984796,
-    },
-  },
-  {
-    id: 1,
-    name: 'Alto Tietê',
-    location: {
-      lat: -23.4456417,
-      lng: -46.3388959,
-    },
-  },
-  {
-    id: 2,
-    name: 'Guarapiranga',
-    location: {
-      lat: -23.6878731,
-      lng: -46.7244247,
-    },
-  },
-  {
-    id: 3,
-    name: 'Cotia',
-    location: {
-      lat: -23.7112341,
-      lng: -46.9700857,
-    },
-  },
-  {
-    id: 4,
-    name: 'Rio Grande',
-    location: {
-      lat: -23.7631571,
-      lng: -46.6366037,
-    },
-  },
-  {
-    id: 5,
-    name: 'Rio Claro',
-    location: {
-      lat: -23.5572303,
-      lng: -45.9311983,
-    },
-  },
-  {
-    id: 17,
-    name: 'São Lourenço',
-    location: {
-      lat: -23.916974,
-      lng: -47.2005764,
-    },
-  },
-];
-
-const getLocationById = (id) => {
-  const filtered = damsLocations.filter((item) => item.id === id);
+const getLocationById = (damsLocations, id) => {
+  console.log('getbyid', damsLocations);
+  const filtered = damsLocations.filter((item) => item._id === id);
   return filtered && filtered[0] && filtered[0].location;
 };
 
-const toDam = (sistema) => {
+const toDam = (damsLocations, sistema) => {
   const id = parseInt(sistema.SistemaId);
   return {
     id: id,
     name: sistema.Nome,
     volume:
       Math.round((sistema.VolumePorcentagem + Number.EPSILON) * 100) / 100,
-    location: getLocationById(id),
+    location: getLocationById(damsLocations, id),
   };
 };
