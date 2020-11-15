@@ -90,7 +90,8 @@ const toDam = (sistema) => {
   return {
     id: id,
     name: sistema.Nome,
-    volume: sistema.VolumePorcentagem,
+    volume:
+      Math.round((sistema.VolumePorcentagem + Number.EPSILON) * 100) / 100,
     location: getLocationById(id),
   };
 };
