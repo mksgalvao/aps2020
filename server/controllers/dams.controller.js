@@ -19,7 +19,6 @@ module.exports.getDams = (req, res, next) => {
       if (!sistemas || sistemas.length < 1) {
         res.status(404);
       } else {
-        console.log('result', sabespResp, damsLocations);
         res.status(200).send(sistemas.map((s) => toDam(damsLocations, s)));
       }
     })
@@ -27,7 +26,6 @@ module.exports.getDams = (req, res, next) => {
 };
 
 const getLocationById = (damsLocations, id) => {
-  console.log('getbyid', damsLocations);
   const filtered = damsLocations.filter((item) => item._id === id);
   return filtered && filtered[0] && filtered[0].location;
 };

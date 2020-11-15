@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { compose } from 'redux';
 import { connect, useDispatch, useSelector } from 'react-redux';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { Button, withTheme } from 'react-native-paper';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { signOut, getLocations } from '../store/actions';
 import { getCurrentUser, getSignedInWith } from '../store/selectors';
 import AppbarHeader from '../components/AppbarHeader';
@@ -41,6 +41,14 @@ const HomeScreen = () => {
   );
 };
 
+HomeScreen.navigationOptions = {
+  title,
+  tabBarIcon: ({ tintColor }) => (
+    <MaterialCommunityIcons name="home-outline" size={24} color={tintColor} />
+  ),
+  tabBarAccessibilityLabel: 'Home Screen',
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,11 +71,3 @@ export default compose(
   }),
   withTheme
 )(HomeScreen);
-
-HomeScreen.navigationOptions = {
-  title,
-  tabBarIcon: ({ tintColor }) => (
-    <MaterialCommunityIcons name="home-outline" size={24} color={tintColor} />
-  ),
-  tabBarAccessibilityLabel: 'Home Screen',
-};

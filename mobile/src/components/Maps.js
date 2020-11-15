@@ -14,7 +14,6 @@ const Maps = (props) => {
 
   return (
     <View style={styles.container}>
-      {console.log(props.locations)}
       <MapView
         style={styles.mapStyle}
         region={region}
@@ -22,7 +21,6 @@ const Maps = (props) => {
       >
         {props.locations.map((dam, index) => (
           <>
-            {console.log(dam)}
             <Marker
               key={index}
               coordinate={{
