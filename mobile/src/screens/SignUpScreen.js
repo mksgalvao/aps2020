@@ -76,7 +76,7 @@ class SignUpScreen extends React.Component {
             <Logo />
             <Spacer>
               <Title style={{ alignSelf: 'center', color: colors.primary }}>
-                Sign Up
+                Cadastro
               </Title>
             </Spacer>
             <Spacer>
@@ -107,7 +107,7 @@ class SignUpScreen extends React.Component {
               <Spacer />
               <View style={styles.fullName}>
                 <TextInput
-                  label="First Name"
+                  label="Nome"
                   mode="outlined"
                   style={styles.name}
                   dense
@@ -118,7 +118,7 @@ class SignUpScreen extends React.Component {
                   disabled={this.props.isSigning}
                 />
                 <TextInput
-                  label="Last Name"
+                  label="SobreNome"
                   mode="outlined"
                   style={styles.name}
                   dense
@@ -131,7 +131,7 @@ class SignUpScreen extends React.Component {
               </View>
               <Spacer />
               <TextInput
-                label="Password"
+                label="Senha"
                 mode="outlined"
                 dense
                 secureTextEntry
@@ -143,7 +143,7 @@ class SignUpScreen extends React.Component {
                 disabled={this.props.isSigning}
               />
               <View style={styles.navLinks}>
-                <NavLink text="Sign in instead!" routeName="SignIn" />
+                <NavLink text="Fazer Login" routeName="SignIn" />
               </View>
             </Spacer>
             <Spacer vertical={4}>
@@ -154,7 +154,7 @@ class SignUpScreen extends React.Component {
                 loading={this.props.isSigning && this.props.type === 'email'}
                 disabled={this.props.isSigning}
               >
-                Sign Up
+                Cadastrar
               </Button>
             </Spacer>
           </ScrollView>
