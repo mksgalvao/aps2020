@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  TouchableOpacity,
+  Linking,
+  Text,
+} from 'react-native';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, withTheme } from 'react-native-paper';
@@ -19,11 +25,20 @@ const ReportScreen = () => {
       <AppbarHeader title={title} />
       <SafeAreaView style={styles.container}>
         <Spacer vertical={16}>
-          <Button onClick={() => console.log(181)}> Ligar</Button>
           <Button
-            onClick={() => console.log('https://sabesp-chat.sabesp.com.br/#/')}
+            onPress={() => Linking.openURL('tel:181')}
+            style={styles.button1}
           >
-            Acessar agencia Sabesp online
+            {' '}
+            Ligar
+          </Button>
+          <Button
+            onPress={() =>
+              Linking.openURL('https://sabesp-chat.sabesp.com.br/#/')
+            }
+            style={styles.button1}
+          >
+            Sabesp Online
           </Button>
         </Spacer>
       </SafeAreaView>
@@ -46,8 +61,11 @@ ReportScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     marginBottom: 8,
+  },
+  button1: {
+    padding: 50,
   },
 });
 
