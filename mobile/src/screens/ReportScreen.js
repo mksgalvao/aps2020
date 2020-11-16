@@ -11,14 +11,21 @@ import { getCurrentUser, getSignedInWith } from '../store/selectors';
 import Spacer from '../components/Spacer';
 import AppbarHeader from '../components/AppbarHeader';
 
-const title = 'Denúncia';
+const title = 'Fazer denúncia';
 
 const ReportScreen = () => {
   return (
     <>
       <AppbarHeader title={title} />
       <SafeAreaView style={styles.container}>
-        <Spacer vertical={16}>Fazer denúncia</Spacer>
+        <Spacer vertical={16}>
+          <Button onClick={() => console.log(181)}> Ligar</Button>
+          <Button
+            onClick={() => console.log('https://sabesp-chat.sabesp.com.br/#/')}
+          >
+            Acessar agencia Sabesp online
+          </Button>
+        </Spacer>
       </SafeAreaView>
     </>
   );
@@ -27,7 +34,11 @@ const ReportScreen = () => {
 ReportScreen.navigationOptions = {
   title,
   tabBarIcon: ({ tintColor }) => (
-    <MaterialCommunityIcons name="home-outline" size={24} color={tintColor} />
+    <MaterialCommunityIcons
+      name="bullhorn-outline"
+      size={24}
+      color={tintColor}
+    />
   ),
   tabBarAccessibilityLabel: 'Report Screen',
 };

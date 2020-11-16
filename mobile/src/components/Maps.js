@@ -20,17 +20,15 @@ const Maps = (props) => {
         onRegionChangeComplete={(region) => setRegion(region)}
       >
         {props.locations.map((dam, index) => (
-          <>
-            <Marker
-              key={index}
-              coordinate={{
-                latitude: dam.location.lat,
-                longitude: dam.location.lng,
-              }}
-              title={dam.name}
-              description={`${dam.volume} %`}
-            />
-          </>
+          <Marker
+            key={index}
+            coordinate={{
+              latitude: dam.location.lat,
+              longitude: dam.location.lng,
+            }}
+            title={dam.name}
+            description={`${dam.volume} %`}
+          />
         ))}
       </MapView>
     </View>

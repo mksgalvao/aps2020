@@ -11,7 +11,7 @@ import AppbarHeader from '../components/AppbarHeader';
 import Maps from '../components/Maps';
 import Spacer from '../components/Spacer';
 
-const title = 'Bem vindo';
+const title = 'Home';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -26,12 +26,12 @@ const HomeScreen = () => {
     <>
       {isLoadinLocations ? (
         <>
-          <AppbarHeader title={title} />
+          <AppbarHeader title={'Bem vindo'} />
           <SafeAreaView style={styles.container}></SafeAreaView>
         </>
       ) : (
         <>
-          <AppbarHeader title={title} />
+          <AppbarHeader title={'Bem vindo'} />
           <SafeAreaView style={styles.container}>
             <Maps locations={locations} />
           </SafeAreaView>
@@ -44,7 +44,11 @@ const HomeScreen = () => {
 HomeScreen.navigationOptions = {
   title,
   tabBarIcon: ({ tintColor }) => (
-    <MaterialCommunityIcons name="home-outline" size={24} color={tintColor} />
+    <MaterialCommunityIcons
+      name="home-map-marker"
+      size={24}
+      color={tintColor}
+    />
   ),
   tabBarAccessibilityLabel: 'Home Screen',
 };
