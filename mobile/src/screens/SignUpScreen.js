@@ -157,12 +157,6 @@ class SignUpScreen extends React.Component {
                 Sign Up
               </Button>
             </Spacer>
-            <Spacer vertical={12}>
-              <Text style={{ alignSelf: 'center' }}>Or Sign Up With</Text>
-            </Spacer>
-            <Spacer>
-              <OAuthButtons />
-            </Spacer>
           </ScrollView>
           <Snackbar
             visible={this.props.errorMessage}
