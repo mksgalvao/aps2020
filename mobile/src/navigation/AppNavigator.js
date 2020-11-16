@@ -8,6 +8,7 @@ import RequestVerificationEmailScreen from '../screens/RequestVerificationEmailS
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ReportScreen from '../screens/ReportScreen';
 
 const authStack = createStackNavigator(
   {
@@ -22,6 +23,7 @@ const authStack = createStackNavigator(
 const mainBottomTabs = createMaterialBottomTabNavigator(
   {
     Home: { screen: HomeScreen },
+    Report: { screen: ReportScreen },
     Settings: { screen: SettingsScreen },
   },
   { initialRouteName: 'Home' }

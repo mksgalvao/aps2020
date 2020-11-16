@@ -24,7 +24,12 @@ import { compose } from 'redux';
 import StatusBar from '../components/StatusBar';
 import { getError, getProcessing, getType } from '../store/selectors';
 import NavLink from '../components/NavLink';
-import { clearErrorMessage, signIn, unloadAuthScreen } from '../store/actions';
+import {
+  clearErrorMessage,
+  getLocations,
+  signIn,
+  unloadAuthScreen,
+} from '../store/actions';
 import Spacer from '../components/Spacer';
 import OAuthButtons from '../components/OAuthButtons';
 import Logo from '../components/Logo';
@@ -79,7 +84,7 @@ class SignInScreen extends React.Component {
               />
               <Spacer />
               <TextInput
-                label="Password"
+                label="Senha"
                 mode="outlined"
                 dense
                 secureTextEntry
@@ -92,12 +97,12 @@ class SignInScreen extends React.Component {
               />
               <View style={styles.navLinks}>
                 <NavLink
-                  text="Forgot password?"
+                  text="Esqueceu a senha?"
                   routeName="RequestPasswordReset"
                   disabled={this.props.isSigning}
                 />
                 <NavLink
-                  text="Register instead!"
+                  text="Registrar"
                   routeName="SignUp"
                   disabled={this.props.isSigning}
                 />
@@ -111,7 +116,7 @@ class SignInScreen extends React.Component {
                 loading={this.props.isSigning && this.props.type === 'email'}
                 disabled={this.props.isSigning}
               >
-                Sign In
+                Login
               </Button>
             </Spacer>
             {this.props.errorMessage === 'Email is not verified' && (

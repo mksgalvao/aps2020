@@ -14,6 +14,7 @@ if (config.env !== 'test') {
   mongoose.connect(config.mongo.uri);
   mongoose.connection.once('open', () => {
     seed.createUsers(config.seed.users);
+    seed.createDams(config.seed.dams);
   });
 } else {
   mongoose.connect(config.mongo.testUri);

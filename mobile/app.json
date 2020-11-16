@@ -9,7 +9,7 @@
     "primaryColor": "#009688",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,5 +22,11 @@
     },
     "description": "MERN stack is intended to provide a starting point for building full-stack JavaScript applications, including dynamic web and mobile apps. The stack is made of MongoDB, Express, React, Redux, React Native and NodeJS. Visit https://tdev.app/mern-stack for more details.",
     "githubUrl": "https://github.com/t-ho/mern-stack"
+  },
+  "android": {
+    "package": "com.codingmechanic.mapcuny",
+    "config": {
+      "googleMaps": { "apiKey": "AIzaSyCe-_wU9xEx8BlIuWlAPTCb4758-uHMINw" }
+    }
   }
 }

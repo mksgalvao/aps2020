@@ -10,7 +10,7 @@ import { getCurrentUser, getSignedInWith } from '../store/selectors';
 import Spacer from '../components/Spacer';
 import AppbarHeader from '../components/AppbarHeader';
 
-const title = 'Settings';
+const title = 'Logout';
 
 class SettingsScreen extends React.Component {
   static navigationOptions = {

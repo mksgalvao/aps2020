@@ -1,33 +1,53 @@
-import React from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { withTheme } from 'react-native-paper';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { signOut } from '../store/actions';
+
+import { Button, withTheme } from 'react-native-paper';
+import { signOut, getLocations } from '../store/actions';
 import { getCurrentUser, getSignedInWith } from '../store/selectors';
 import AppbarHeader from '../components/AppbarHeader';
+import Maps from '../components/Maps';
+import Spacer from '../components/Spacer';
 
-const title = 'Home';
+const title = 'Bem vindo';
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title,
-    tabBarIcon: ({ tintColor }) => (
-      <MaterialCommunityIcons name="home-outline" size={24} color={tintColor} />
-    ),
-    tabBarAccessibilityLabel: 'Home Screen',
-  };
+const HomeScreen = () => {
+  const dispatch = useDispatch();
+  const locations = useSelector((state) => state.locations.locations);
+  const isLoadinLocations = useSelector((state) => state.locations.loading);
 
-  render() {
-    return (
-      <>
-        <AppbarHeader title={title} />
-        <SafeAreaView style={styles.container}></SafeAreaView>
-      </>
-    );
-  }
-}
+  useEffect(() => {
+    dispatch(getLocations());
+  }, [dispatch]);
+
+  return (
+    <>
+      {isLoadinLocations ? (
+        <>
+          <AppbarHeader title={title} />
+          <SafeAreaView style={styles.container}></SafeAreaView>
+        </>
+      ) : (
+        <>
+          <AppbarHeader title={title} />
+          <SafeAreaView style={styles.container}>
+            <Maps locations={locations} />
+          </SafeAreaView>
+        </>
+      )}
+    </>
+  );
+};
+
+HomeScreen.navigationOptions = {
+  title,
+  tabBarIcon: ({ tintColor }) => (
+    <MaterialCommunityIcons name="home-outline" size={24} color={tintColor} />
+  ),
+  tabBarAccessibilityLabel: 'Home Screen',
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -47,6 +67,7 @@ export default compose(
     signOut,
     getCurrentUser,
     getSignedInWith,
+    getLocations,
   }),
   withTheme
 )(HomeScreen);

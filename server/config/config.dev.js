@@ -43,6 +43,64 @@ let devConfig = {
         role: 'user',
       },
     ],
+    dams: [
+      {
+        _id: 0,
+        name: 'Cantareira',
+        location: {
+          lat: -23.1566035,
+          lng: -46.3984796,
+        },
+      },
+      {
+        _id: 1,
+        name: 'Alto Tietê',
+        location: {
+          lat: -23.4456417,
+          lng: -46.3388959,
+        },
+      },
+      {
+        _id: 2,
+        name: 'Guarapiranga',
+        location: {
+          lat: -23.6878731,
+          lng: -46.7244247,
+        },
+      },
+      {
+        _id: 3,
+        name: 'Cotia',
+        location: {
+          lat: -23.7112341,
+          lng: -46.9700857,
+        },
+      },
+      {
+        _id: 4,
+        name: 'Rio Grande',
+        location: {
+          lat: -23.7631571,
+          lng: -46.6366037,
+        },
+      },
+      {
+        _id: 5,
+        name: 'Rio Claro',
+        location: {
+          lat: -23.5572303,
+          lng: -45.9311983,
+        },
+      },
+      {
+        _id: 17,
+        name: 'São Lourenço',
+        location: {
+          lat: -23.916974,
+          lng: -47.2005764,
+        },
+      },
+    ],
   },
 };
 
